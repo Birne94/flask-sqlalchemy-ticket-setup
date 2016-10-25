@@ -28,6 +28,16 @@ def index():
         .filter(Ticket.status == TicketStatus.open) \
         .all()
 
+    # Try running the query again
+    try:
+        result = db.session.query(Ticket) \
+            .filter(Ticket.status == TicketStatus.open) \
+            .all()
+    except:
+        print('query failed on second try')
+    else:
+        print('query successful on second try')
+
     return '', 200
 
 
